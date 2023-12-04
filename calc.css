@@ -1,0 +1,44 @@
+#container{
+    margin-left: 30%;
+    margin-top: 50px;
+    border:0.5px solid black;
+    width:350px;
+    height:400px;
+    padding: 30px ;
+    display: flex;
+    justify-content: center;
+    background-color: #363535;
+    border-radius: 10px;
+    box-shadow: 20px 10px 30px rgba(84, 84, 84, 0.737);
+}
+#items {
+    left: 20px;   
+    bottom: 30px;
+
+
+}
+button{
+  margin-bottom: 10px;
+    width: 50px;
+    height: 40px;
+   margin-left: 10px;
+   margin-top: 20px;
+   color: white;
+   background-color: rgba(41, 39, 39, 0.479);
+   border-radius: 1px;
+
+}
+.num{
+    background-color: rgba(103, 99, 99, 0.731);
+}
+
+
+#enter{
+    margin-left: 14.5px;
+    height: 30px;
+    width:300px;
+    text-align: right;
+    font-style: normal;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

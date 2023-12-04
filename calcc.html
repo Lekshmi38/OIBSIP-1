@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    <div id="container">
+        <div id="Calculator">
+            <div class="display">
+                <input type="text" id="enter" value=" ">
+            </div>
+            <div id="items">
+                <button id="paraleft">)</button>
+              <button class="num"  onclick="operate('0')">0</button>
+                 <button id="pararight">(</button>
+                <button id="ans" onclick="find()">=</button>
+                <button id="clr" onclick="cleardis()">C</button>
+                <button class="num"  onclick="operate('7')">7</button>
+                <button class="num"  onclick="operate('8')">8</button>
+                <button class="num"  onclick="operate('9')">9</button>
+                <button id="per" onclick="operate('%')">%</button>
+                <button id="sqrt" onclick="sqrt()">sqrt</button>
+                <button class="num"  onclick="operate('4')">4</button>
+                <button class="num"  onclick="operate('5')">5</button>
+                <button class="num"  onclick="operate('6')">6</button>
+                <button id="mul" onclick="operate('*')">*</button>
+                <button id="div" onclick="operate('/')">/</button>
+                <button class="num"  onclick="operate('1')">1</button>
+                <button class="num"  onclick="operate('2')">2</button>
+                <button class="num"  onclick="operate('3')">3</button>
+                <button id="add" onclick="operate('+')">+</button>
+                <button id="sub" onclick="operate('-')">-</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const dis = document.getElementById("enter");
+
+        function operate(val) {
+            dis.value += val;
+        }
+
+        function cleardis() {
+            dis.value = '';
+        }
+
+        function sqrt() {
+            const inputValue = parseFloat(dis.value);
+          if ( inputValue >= 0) {
+                dis.value = Math.sqrt(inputValue);
+          }
+             else {
+                dis.value = 'Invalid Input';
+            } 
+        }
+
+        function find() {
+            const result = calculate(dis.value);
+            dis.value = result;
+        }
+
+        function calculate(item) {
+            const operators = ['-', '+', '*', '/', '%'];
+            const parts = item.match(/(\d+(\.\d+)?|[+\-*/%])/g) || [];
+            let firstExp = parseFloat(parts[0]);
+
+            for (let i = 1; i < parts.length; i+=2) {
+                const operator = parts[i];
+                const secExp = parseFloat(parts[i + 1]);
+
+                switch (operator) {
+                    case '+':
+                        firstExp += secExp;
+                        break;
+                    case '-':
+                        firstExp -= secExp;
+                        break;
+                    case '*':
+                        firstExp *= secExp;
+                        break;
+                    case '/':
+                        if (secExp !== 0) {
+                            firstExp /= secExp;
+                        } else {
+                            return 'Division by zero';
+                        }
+                        break;
+                    case '%':
+                        firstExp %= secExp;
+                        break;
+                }
+                i++; 
+            }
+
+            return firstExp;
+        }
+    </script>
+    </body>
+</html>
